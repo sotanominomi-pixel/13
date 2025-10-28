@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>N Clock - Digital + Stopwatch</title>
+<link rel="manifest" href="manifest.json">
+<style>
+body { 
+  font-family: -apple-system, sans-serif; 
+  text-align: center; 
+  padding: 30px; 
+  background: #000; 
+  color: #fff;
+}
+#clockDisplay, #stopwatchDisplay { 
+  font-size: 100px; 
+  font-weight: bold; 
+  margin: 50px 0; 
+  font-variant-numeric: tabular-nums; 
+}
+.stopwatch-controls button, .mode-switch button {
+  font-size: 24px; 
+  padding: 15px 30px; 
+  margin: 10px; 
+  border-radius: 16px; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600;
+}
+.mode-switch { 
+  margin-top: 50px; 
+}
+.mode-switch button { 
+  background: #222; 
+  color: #fff; 
+}
+.mode-switch button.active { 
+  background: #fff; 
+  color: #000; 
+}
+.stopwatch-controls button#startStopBtn { background: #222; color:#fff; }
+.stopwatch-controls button#resetBtn { background: #444; color:#fff; }
+.stopwatch-controls button#lapBtn { background: #666; color:#fff; }
+.slider-container { margin-top: 30px; }
+input[type=range] { width: 400px; height: 10px; border-radius: 5px; accent-color: #fff; background: #444; }
+#laps { margin-top: 20px; max-height: 200px; overflow-y: auto; text-align: left; width: 400px; margin-left:auto; margin-right:auto; border: 1px solid #fff; border-radius: 8px; padding: 10px; }
+</style>
+</head>
+<body>
+
+<div id="clockDisplay">00:00:00</div>
+<div id="stopwatchDisplay" style="display:none;">00:00:00</div>
+
+<div class="stopwatch-controls" style="display:none;">
+  <button id="startStopBtn">START</button>
+  <button id="lapBtn">LAP</button>
+  <button id="resetBtn">RESET</button>
+</div>
+
+<div class="slider-container">
+  <label>1日の長さ: <span id="speedDisplay">24</span> 時間</label><br>
+  <input type="range" id="speedSlider" min="12" max="48" value="24">
+</div>
+
+<div id="laps"></div>
+
+<div class="mode-switch">
+  <button id="clockBtn" class="active">時計</button>
+  <button id="stopwatchBtn">ストップウォッチ</button>
+</div>
+
+<script src="sw.js"></script>
+</body>
+</html>
